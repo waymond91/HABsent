@@ -3,3 +3,15 @@
   text-align: center;
   height: "100%";
 }
+
+.navbar-custom .nav-link,
+.navbar-custom .nav-link:hover,
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-brand:hover,
+.navbar-custom .navbar-text {
+  color: white;
+}
+/* change the background color */
+.navbar-custom {
+  background-color: #005966;
+}

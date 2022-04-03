@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import { Button, Row, Col } from "react-bootstrap";
+import { Button, Row, Col, Navbar, Container, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 mapboxgl.accessToken =
@@ -36,7 +36,24 @@ export default function Home() {
   return (
     <Row>
       <Col xs={12} lg={6}>
-        <div style={{ backgroundColor: "tomato", height: "100vh" }}>
+        <div style={{ backgroundColor: "white", height: "100vh" }}>
+          <nav class="navbar-custom ">
+            <Navbar>
+              <Container>
+                <Navbar.Brand href="#home">HABsent</Navbar.Brand>
+                <div class="collapse navbar-collapse">
+                  <Navbar.Collapse className="justify-content-end">
+                    <Nav.Link href="#sign_in">Sign in</Nav.Link>
+                    <Nav.Item>
+                      <Button href="#sign_up" variant="light">
+                        Sign up
+                      </Button>
+                    </Nav.Item>
+                  </Navbar.Collapse>
+                </div>
+              </Container>
+            </Navbar>
+          </nav>
           <div className="sidebar">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
           </div>
