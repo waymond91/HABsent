@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
-import { Button } from "react-bootstrap";
+import { Button, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYnJldHRtc21pdGgiLCJhIjoiY2t1NzFxNGt2MW9pNDJ2bzZqdmlibWJoZSJ9.lorLL3V1xySe1Gm75RvdNQ";
@@ -33,12 +34,24 @@ export default function Home() {
   });
 
   return (
-    <div style={{ backgroundColor: "tomato", height: "100vh", flex: 1 }}>
-      <div className="sidebar">
-        Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
-      </div>
-      <div ref={mapContainer} style={{ height: "90vh" }} />
-      <Button variant="primary">Hello</Button>
-    </div>
+    <Row>
+      <Col xs={12} lg={6}>
+        <div style={{ backgroundColor: "tomato", height: "100vh", flex: 1 }}>
+          <div className="sidebar">
+            Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
+          </div>
+          <div ref={mapContainer} style={{ height: "90vh" }} />
+        </div>
+      </Col>
+
+      <Col xs={12} lg={6}>
+        <Link to="/page1">
+          <Button variant="primary" onClick={() => {}}>
+            Hello
+          </Button>
+        </Link>
+        These columns are responsive.
+      </Col>
+    </Row>
   );
 }
