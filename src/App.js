@@ -1,15 +1,8 @@
 import "./styles.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useState } from "react";
 import Home from "./pages/Home";
-
-function Page1() {
-  return (
-    <div className="App">
-      <h1>Page 1</h1>
-      <h2>Hopefully this shows how routing works</h2>
-    </div>
-  );
-}
+import Page1 from "./pages/Page1";
 
 function NoPage() {
   return (

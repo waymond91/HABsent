@@ -36,7 +36,7 @@ export default function Home() {
   return (
     <Row>
       <Col xs={12} lg={6}>
-        <div style={{ backgroundColor: "tomato", height: "100vh", flex: 1 }}>
+        <div style={{ backgroundColor: "tomato", height: "100vh" }}>
           <div className="sidebar">
             Longitude: {lng} | Latitude: {lat} | Zoom: {zoom}
           </div>
@@ -44,7 +44,15 @@ export default function Home() {
         </div>
       </Col>
 
-      <Col xs={12} lg={6}>
+      <Col
+        xs={12}
+        lg={6}
+        style={{
+          alignItems: "center",
+          alignContent: "center",
+          alignSelf: "center"
+        }}
+      >
         <Link to="/page1">
           <Button variant="primary" onClick={() => {}}>
             Hello
