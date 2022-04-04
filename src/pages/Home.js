@@ -1,7 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl"; // eslint-disable-line import/no-webpack-loader-syntax
 import { Button, Row, Col, Navbar, Container, Nav } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 mapboxgl.accessToken =
   "pk.eyJ1IjoiYnJldHRtc21pdGgiLCJhIjoiY2t1NzFxNGt2MW9pNDJ2bzZqdmlibWJoZSJ9.lorLL3V1xySe1Gm75RvdNQ";
@@ -35,22 +34,20 @@ export default function Home() {
 
   return (
     <Row>
-      <Col xs={12} lg={6}>
+      <Col>
         <div style={{ backgroundColor: "white", height: "100vh" }}>
           <nav class="navbar-custom ">
-            <Navbar>
+            <Navbar variant="dark">
               <Container>
                 <Navbar.Brand href="#home">HABsent</Navbar.Brand>
-                <div class="collapse navbar-collapse">
-                  <Navbar.Collapse className="justify-content-end">
-                    <Nav.Link href="#sign_in">Sign in</Nav.Link>
-                    <Nav.Item>
-                      <Button href="#sign_up" variant="light">
-                        Sign up
-                      </Button>
-                    </Nav.Item>
-                  </Navbar.Collapse>
-                </div>
+                <Navbar.Collapse className="justify-content-end">
+                  <Nav.Link href="/sign_in">Sign in</Nav.Link>
+                  <Nav.Item>
+                    <Button href="/sign_up" variant="light">
+                      Sign up
+                    </Button>
+                  </Nav.Item>
+                </Navbar.Collapse>
               </Container>
             </Navbar>
           </nav>
@@ -59,23 +56,6 @@ export default function Home() {
           </div>
           <div ref={mapContainer} style={{ height: "90vh" }} />
         </div>
-      </Col>
-
-      <Col
-        xs={12}
-        lg={6}
-        style={{
-          alignItems: "center",
-          alignContent: "center",
-          alignSelf: "center"
-        }}
-      >
-        <Link to="/page1">
-          <Button variant="primary" onClick={() => {}}>
-            Hello
-          </Button>
-        </Link>
-        These columns are responsive.
       </Col>
     </Row>
   );

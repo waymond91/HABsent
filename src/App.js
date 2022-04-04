@@ -1,25 +1,17 @@
 import "./styles.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import React, { useState } from "react";
 import Home from "./pages/Home";
-import Page1 from "./pages/Page1";
-
-function NoPage() {
-  return (
-    <div className="App">
-      <h1>404</h1>
-      <h2>You've gone off the grid!</h2>
-    </div>
-  );
-}
-
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import NoPage from "./pages/NoPage";
 
 export default function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="page1" element={<Page1 />} />
+        <Route path="sign_in" element={<SignIn />} />
+        <Route path="sign_up" element={<SignUp />} />
         <Route path="*" element={<NoPage />} />
       </Routes>
     </BrowserRouter>
