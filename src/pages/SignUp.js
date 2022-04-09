@@ -44,6 +44,37 @@ export default function SignUp() {
     display: "block"
   };
 
+  const handleSubmit = () => {
+    const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    //var data = null;
+
+    const apiKey = "329e6f3abbe1e4290163b02111c101ab89757";
+    //const apiKey = "624fd16067937c128d7c95f9";
+
+    // Insert new user
+
+    var url = "https://habsent-0ddb.restdb.io/rest/usertable";
+
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", url);
+
+    xhr.setRequestHeader("Content-Type", "application/json");
+    xhr.setRequestHeader("x-apikey", apiKey);
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4) {
+        console.log(xhr.status);
+        console.log(xhr.responseText);
+      }
+    };
+    const active = 1;
+    const extraData = JSON.stringify({ more: "json", value: "here" });
+    var data = `{"email":"${emailRef}","username":"${usernameRef}","password":"${passwordRef}","active":${active},"data":${extraData}}`;
+    console.log(data);
+    xhr.send(data);
+    window.location.href = "/";
+  };
+
   const Field = React.forwardRef(({ label, type }, ref) => {
     return (
       <div>
@@ -53,21 +84,15 @@ export default function SignUp() {
     );
   });
 
+  const usernameRef = React.useRef();
+  const emailRef = React.useRef();
+  const passwordRef = React.useRef();
+
   const Form = ({ onSubmit }) => {
-    const usernameRef = React.useRef();
-    const emailRef = React.useRef();
-    const passwordRef = React.useRef();
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const data = {
-        username: usernameRef.current.value,
-        email: emailRef.current.value,
-        password: passwordRef.current.value
-      };
-      onSubmit(data);
-    };
     return (
-      <form style={formStyle} onSubmit={handleSubmit}>
+      <form
+        style={formStyle} //onSubmit={handleSubmit}
+      >
         <Field ref={usernameRef} label="Username:" type="text" />
         <Field ref={emailRef} label="Email:" type="email" />
         <Field ref={passwordRef} label="Password:" type="password" />
@@ -84,7 +109,10 @@ export default function SignUp() {
           <button
             style={submitStyle}
             type="submit"
-            onClick={(event) => (window.location.href = "/")}
+            onClick={
+              handleSubmit
+              //(event) => (window.location.href = "/")
+            }
           >
             Sign up
           </button>
@@ -101,33 +129,27 @@ export default function SignUp() {
     singleValue: (provided, state) => {
       const opacity = state.isDisabled ? 0.5 : 1;
       const transition = "opacity 300ms";
-      const color = state.isDisabled ? "red" : "#005966";
 
       return { ...provided, opacity, transition };
     }
   };
 
   const options = [
-    { value: "mahe", label: "Mahé" },
-    { value: "praslin", label: "Praslin" },
-    { value: "la digue", label: "La Digue" }
+    { value: "location 1", label: "location 1" },
+    { value: "location 2", label: "location 2" },
+    { value: "location 3", label: "location 3" }
   ];
 
-  const handleSubmit = (data) => {
-    const json = JSON.stringify(data, null, 4);
-    console.clear();
-    console.log(json);
-  };
-
   return (
-    <div SignIn>
+    <div SignUp>
       <div className="App">
         &nbsp;
         <h1>Sign Up</h1>
         &nbsp;
       </div>
       <div style={SignUpStyle}>
-        <Form onSubmit={handleSubmit} />
+        <Form //onSubmit={handleSubmit}
+        />
       </div>
     </div>
   );
